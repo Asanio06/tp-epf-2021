@@ -8,7 +8,7 @@ contract Election {
     uint public votersCount;
 
     // mapping entre le votant et son vote
-    mapping(uint => Vote) public voters;
+    mapping(address => Vote) public voters;
 
     // constructeur
     constructor(string memory _name) public{
@@ -46,6 +46,11 @@ contract Election {
 
     // Handles a vote
     function vote(uint _id) public {
+        require(checkNotEmptyName(candidates[_id].name),"Candidate ID is too high");
+        require(!voters[msg.sender].hasVoted,"You have already voted");
+        voters[msg.sender].hasVoted = true;
+        votersCount++;
+        candidates[_id].votesCount++;
     }
 
     // Gets a candidate's result
