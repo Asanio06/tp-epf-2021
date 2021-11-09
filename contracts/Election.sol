@@ -55,6 +55,7 @@ contract Election {
 
     // Gets a candidate's result
     function voteResultForACandidate(uint _id) view public returns (string memory _name, uint _votesCount) {
+        return (candidates[_id].name,candidates[_id].votesCount);
     }
 
     // Counts all votes that occurred in this election
