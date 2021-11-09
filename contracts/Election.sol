@@ -60,6 +60,7 @@ contract Election {
 
     // Counts all votes that occurred in this election
     function countVotes() view public returns (uint totalVotesCount) {
+        return votersCount;
     }
 
 }
