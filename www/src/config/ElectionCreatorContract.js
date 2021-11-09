@@ -19,6 +19,7 @@ class ElectionCreatorContract {
     }
 
     createNewElection(name) {
+        this.contract.newElection(name);
     }
 
     onCreation(callback) {

@@ -2,7 +2,7 @@ import { ethers } from 'ethers'
 
 class EtherProvider {
     constructor() {
-        let provider
+        let provider;
         // use web3 instance is already provided by MetaMask,
         if (typeof window.etherum !== 'undefined') {
             window.etherum.enable();
