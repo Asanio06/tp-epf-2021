@@ -3,8 +3,22 @@ pragma solidity ^0.6.8;
 
 contract Election {
 
+    string public name;
+    uint public candidatesCount;
+    uint public votersCount;
+
+    // mapping entre le votant et son vote
+    mapping(uint => Vote) public voters;
+
+    // constructeur
+    constructor(string memory _name) public{
+        name = _name;
+    }
     // This struct represents a candidate
     struct Candidate {
+        string name;
+        uint id;
+        uint votesCount;
     }
 
     event VoteEvent(uint id, address voterAddress);
