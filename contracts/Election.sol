@@ -33,10 +33,15 @@ contract Election {
 
     // Adds a new candidate to this election
     function addCandidate(string calldata _name) external {
+        require (checkNotEmptyName(_name),"The candidate name must not be empty");
+        candidates[candidatesCount] = Candidate(_name,candidatesCount,0);
+        candidatesCount++;
+
     }
 
     // Check if a string isn't empty
     function checkNotEmptyName(string memory _name) private pure returns (bool) {
+        return bytes(_name).length > 0;
     }
 
     // Handles a vote
