@@ -1,4 +1,5 @@
 import {ethers} from 'ethers'
+import Candidate from "../model/Candidate";
 
 let electionContractJson = require('../../../build/contracts/Election.json')
 
@@ -17,7 +18,9 @@ class ElectionContract {
     getCandidatesCount() {
     }
 
-    getCandidate(index) {
+    async getCandidate(index) {
+        const candidat = await this.contract.getCandidate(index)
+        return new Candidate(candidat.id.toNumber(), candidat.name, candidat.votesCount)
     }
 
     haveVoted(account) {
