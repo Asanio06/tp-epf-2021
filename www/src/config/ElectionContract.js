@@ -12,28 +12,29 @@ class ElectionContract {
         )
     }
 
-    getName() {
+    async getName() {
+       return  this.contract.name();
     }
 
-    getCandidatesCount() {
+    async getCandidatesCount() {
+        return this.contract.candidatesCount();
     }
 
     async getCandidate(index) {
-        const candidat = await this.contract.getCandidate(index)
-        return new Candidate(candidat.id.toNumber(), candidat.name, candidat.votesCount)
+        return await this.contract.candidates(index)
     }
 
     async haveVoted(account) {
-       const vote =  await this.contract.getVoters(account);
+       const vote =  await this.contract.voters(account);
        return vote.hasVoted;
     }
 
-    addCandidate(name) {
-        this.contract.addCandidate(name);
+    async addCandidate(name) {
+        return this.contract.addCandidate(name);
     }
 
    async castVote(candidateId) {
-        this.contract.vote(candidateId);
+        return this.contract.vote(candidateId);
     }
 
     onVote(electionId, candidateId, callback) {
