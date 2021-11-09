@@ -51,6 +51,7 @@ contract Election {
         voters[msg.sender].hasVoted = true;
         votersCount++;
         candidates[_id].votesCount++;
+        emit VoteEvent(_id, msg.sender);
     }
 
     // Gets a candidate's result
