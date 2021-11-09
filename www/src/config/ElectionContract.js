@@ -23,7 +23,9 @@ class ElectionContract {
         return new Candidate(candidat.id.toNumber(), candidat.name, candidat.votesCount)
     }
 
-    haveVoted(account) {
+    async haveVoted(account) {
+       const vote =  await this.contract.getVoters(account);
+       return vote.hasVoted;
     }
 
     addCandidate(name) {
