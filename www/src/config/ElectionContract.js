@@ -30,7 +30,8 @@ class ElectionContract {
         this.contract.addCandidate(name);
     }
 
-    castVote(candidateId) {
+   async castVote(candidateId) {
+        this.contract.vote(candidateId);
     }
 
     onVote(electionId, candidateId, callback) {
